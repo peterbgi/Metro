@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Metro.Views.UtvonalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Metro.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="200" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding UtvonalTerv}" />
+        <Border Grid.Column="1" Padding="5"
+                BorderThickness="1" BorderBrush="Black">
+            <StackPanel>
+                <Label>Indulás</Label>
+                <ComboBox ItemsSource="{Binding Allomasok}"
+                          DisplayMemberPath="AllomasNev"
+                          SelectedValuePath="AllomasNev"
+                          SelectedValue="{Binding Indulas}"/>
+                <Label>Érkezés</Label>
+                <ComboBox ItemsSource="{Binding Allomasok}"
+                          DisplayMemberPath="AllomasNev"
+                          SelectedValuePath="AllomasNev"
+                          SelectedValue="{Binding Erkezes}"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    <Button Margin="0 0 50 0" Command="{Binding TervezesCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/ConnectArrow.png" />
+                            <TextBlock>Tervezés</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding KiuritesCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/CleanData.png" />
+                            <TextBlock>Kiürítés</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
